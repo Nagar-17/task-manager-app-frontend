@@ -26,9 +26,9 @@ const Register = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-900 dark:to-gray-800">
       <form
         onSubmit={handleSubmit}
-        className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md w-full max-w-md space-y-4"
+        className="register-page bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md w-full max-w-md space-y-4"
       >
-        <h2 className="text-2xl font-semibold text-center text-gray-800 dark:text-white">
+        <h2 className="text-2xl font-semibold text-center text-blue-600 dark:text-white">
           Create Account
         </h2>
 
@@ -72,8 +72,7 @@ const Register = () => {
             Login here
           </Link>
         </p>
-        <p className="text-sm mt-4 text-center text-gray-600 dark:text-gray-400">Powered by Pravin</p>
-
+        <p className="text-sm mt-4 text-center text-gray-600 dark:text-gray-400">🚀 Built by Pravin</p>
       </form>
     </div>
   );

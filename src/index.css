@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#root main{
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+@media screen and (max-width: 500px) {
+.login-page.max-w-sm {
+    max-width: 18rem;
+}
+.register-page.max-w-md {
+    max-width: 18rem;
+}
+}
