@@ -4,7 +4,7 @@ const API = axios.create({
   baseURL: 'https://task-manager-backend-3xsl.onrender.com/api',
 });
 
-// Send token in every request
+// Send token in every request ok 
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
