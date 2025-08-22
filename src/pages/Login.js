@@ -6,6 +6,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -13,6 +14,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+     setLoading(true);
     setError('');
     try {
       const res = await API.post('/users/login', form);
@@ -21,6 +23,9 @@ const Login = () => {
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
     }
+     finally {
+     setLoading(false);
+   }
   };
 
   return (
@@ -47,11 +52,16 @@ const Login = () => {
             required
           />
           <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
-          >
-            Login
-          </button>
+              type="submit"
+              className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition flex justify-center items-center"
+              disabled={loading}
+            >
+              {loading ? (
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              ) : (
+                "Login"
+              )}
+            </button>
         </form>
 
         {error && <p className="text-red-500 mt-3 text-sm text-center">{error}</p>}

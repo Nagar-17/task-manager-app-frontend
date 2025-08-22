@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../api';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -12,14 +13,16 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+     setLoading(true);
     try {
-      const res = await axios.post('/api/users/register', form);
-      console.log(res)
+      const res = await API.post('/users/register', form);
       localStorage.setItem('token', res.data.token);
       navigate('/tasks');
     } catch (err) {
       alert(err.response?.data?.message || 'Registration failed');
-    }
+    }finally {
+    setLoading(false);
+  }
   };
 
   return (
@@ -63,9 +66,15 @@ const Register = () => {
         <button
           type="submit"
           className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg"
+           disabled={loading}
         >
+        {loading ? (
+        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+         ) : (
           Register
+          )}
         </button>
+
         <p className="text-sm mt-4 text-center text-gray-600 dark:text-gray-400">
           Already have an account?{' '}
           <Link to="/" className="text-blue-600 hover:underline dark:text-blue-400">

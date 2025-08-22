@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className={
-      `${darkMode ? 'dark' : ''} min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100 font-sans`
+      `${darkMode ? 'dark' : ''} min-h-screen flex flex-col bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100 font-sans`
     }>
 
  <header className="bg-white dark:bg-gray-900 shadow sticky top-0 z-50">
@@ -70,7 +70,7 @@ function App() {
             ☰
           </button>
         </div>
-      </header>
+  </header>
        {/* Mobile Drawer */}
       <div
         className={`fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out z-50 ${
@@ -118,7 +118,7 @@ function App() {
         ></div>
       )}
 
-      <main className=" mx-auto px-4 py-6 dark:bg-gray-900 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100">
+      <main className="mx-auto flex-grow px-4 py-6 dark:bg-gray-900 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100">
         <TaskList key={reload} onEdit={handleEdit} />
         <div className="mb-6 flex justify-center">
           <button
