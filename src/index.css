@@ -5,6 +5,7 @@
 #root main{
     padding-top: 0px;
     padding-bottom: 10px;
+    width: 100%;
 }
 .top-3 {
     top: 24px;
